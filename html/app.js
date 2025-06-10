@@ -81,23 +81,26 @@ function showApp(isManager, isHighAuthority) {
     document.body.classList.add('visible');
 
     let sidebarHTML = `
-        <button onclick="showTab('orders')" class="slide-in">📋 Asset Orders</button>
+        <button onclick="showTab('orders')" class="slide-in">Dashboard</button>
     `;
 
     if (isManager) {
         sidebarHTML += `
-            <button onclick="showTab('manager')" class="slide-in">⚙️ Manage Orders</button>
+            <button onclick="showTab('manager')" class="slide-in">Operations</button>
         `;
     }
 
     if (isHighAuthority) {
         sidebarHTML += `
-            <button onclick="showTab('approved')" class="slide-in">✅ Approved Orders</button>
+            <button onclick="showTab('approved')" class="slide-in">Security</button>
         `;
     }
 
     sidebarHTML += `
-        <button onclick="closeApp()" class="slide-in">🚪 Close</button>
+        <button onclick="showTab('orders')" class="slide-in">Communications</button>
+        <button onclick="showTab('orders')" class="slide-in">Archives</button>
+        <button onclick="showTab('orders')" class="slide-in">Asset Orders</button>
+        <button onclick="closeApp()" class="slide-in">BACK</button>
     `;
 
     document.querySelector('.sidebar').innerHTML = sidebarHTML;
@@ -110,11 +113,11 @@ function showTab(tab) {
     if (tab === 'orders') {
         mainContent.innerHTML = `
             <div class="fade-in">
-                <h2>📋 ASSET FORM</h2>
+                <h2>ASSET FORM</h2>
                 <div style="margin-bottom: 20px; padding: 15px; background: linear-gradient(145deg, #1a4a1a, #0f2f0f); border: 1px solid rgba(0, 255, 0, 0.3); border-radius: 8px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <span style="color: #00CC00; font-size: 14px;">SECURE CONNECTION | 05-23-2025 | 16:44:34</span>
-                        <span style="color: #00FF00; font-size: 12px; background: rgba(0, 255, 0, 0.1); padding: 4px 8px; border-radius: 4px;">🔒 ENCRYPTED</span>
+                        <span style="color: #00FF00; font-size: 12px; background: rgba(0, 255, 0, 0.1); padding: 4px 8px; border-radius: 4px;">ENCRYPTED</span>
                     </div>
                 </div>
                 
@@ -125,14 +128,14 @@ function showTab(tab) {
                 
                 <div style="margin-bottom: 20px;">
                     <label style="display: block; margin-bottom: 8px; color: #00CC00; font-size: 14px;">Order Details</label>
-                    <textarea id='order_details' rows='5' placeholder='YO MY DAWG'></textarea>
+                    <textarea id='order_details' rows='5' placeholder='YO MY DAWG , LE'></textarea>
                     <div style="text-align: right; color: rgba(0, 255, 0, 0.5); font-size: 12px; margin-top: 5px;">
                         <span id="char-count">0</span>/500 characters
                     </div>
                 </div>
                 
                 <button onclick='submitOrder()' style="width: 100%; padding: 15px; font-size: 16px;">
-                    📤 Submit Order
+                    Submit Order
                 </button>
             </div>
         `;
@@ -147,7 +150,7 @@ function showTab(tab) {
     } else if (tab === 'manager') {
         mainContent.innerHTML = `
             <div class="fade-in">
-                <h2>⚙️ MANAGE ORDERS</h2>
+                <h2>MANAGE ORDERS</h2>
                 <div style="text-align: center; padding: 40px; color: rgba(0, 255, 0, 0.6);">
                     <div style="font-size: 24px; margin-bottom: 15px;">⏳</div>
                     <p>Loading order data...</p>
@@ -162,19 +165,19 @@ function showTab(tab) {
         }).then(response => response.json()).then(orders => {
             let content = `
                 <div class="fade-in">
-                    <h2>⚙️ MANAGE ORDERS</h2>
+                    <h2>MANAGE ORDERS</h2>
                     <div style="margin-bottom: 20px; color: rgba(0, 255, 0, 0.7);">
                         Total Orders: <span style="color: #00FF00; font-weight: bold;">${orders.length}</span>
                     </div>
                     <div style="overflow-x: auto;">
                         <table>
                             <tr>
-                                <th>👤 Player</th>
-                                <th>🏢 Gang</th>
-                                <th>📦 Asset</th>
-                                <th>📝 Details</th>
-                                <th>📊 Status</th>
-                                <th>⚡ Actions</th>
+                                <th>PLAYER</th>
+                                <th>GANG</th>
+                                <th>ASSET</th>
+                                <th>DETAILS</th>
+                                <th>STATUS</th>
+                                <th>ACTIONS</th>
                             </tr>
             `;
             
@@ -185,11 +188,11 @@ function showTab(tab) {
                     <td>${order.player_name}</td>
                     <td>${order.gang_name}</td>
                     <td>${order.asset_name}</td>
-                    <td style="max-width: 200px;">${order.order_details}</td>
+                    <td>${order.order_details}</td>
                     <td><span style="color: ${statusColor}; font-weight: bold;">${order.status}</span></td>
                     <td>
-                        <button onclick="updateOrder(${order.id}, 'Accepted')" style="background: linear-gradient(145deg, #1a4a1a, #0f2f0f); margin-right: 5px;">✅ Accept</button>
-                        <button onclick="updateOrder(${order.id}, 'Rejected')" style="background: linear-gradient(145deg, #4a1a1a, #2f0f0f);">❌ Reject</button>
+                        <button onclick="updateOrder(${order.id}, 'Accepted')" style="background: linear-gradient(145deg, #1a4a1a, #0f2f0f); margin-right: 5px;">ACCEPT</button>
+                        <button onclick="updateOrder(${order.id}, 'Rejected')" style="background: linear-gradient(145deg, #4a1a1a, #2f0f0f);">REJECT</button>
                     </td>
                 </tr>`;
             });
@@ -202,11 +205,11 @@ function showTab(tab) {
         }).catch(error => {
             mainContent.innerHTML = `
                 <div class="fade-in">
-                    <h2>⚙️ MANAGE ORDERS</h2>
+                    <h2>MANAGE ORDERS</h2>
                     <div style="text-align: center; padding: 40px; color: #FF6B6B;">
                         <div style="font-size: 24px; margin-bottom: 15px;">⚠️</div>
                         <p>Failed to load orders. Please try again.</p>
-                        <button onclick="showTab('manager')" style="margin-top: 20px;">🔄 Retry</button>
+                        <button onclick="showTab('manager')" style="margin-top: 20px;">Retry</button>
                     </div>
                 </div>
             `;
@@ -215,7 +218,7 @@ function showTab(tab) {
     } else if (tab === 'approved') {
         mainContent.innerHTML = `
             <div class="fade-in">
-                <h2>✅ APPROVED ORDERS</h2>
+                <h2>APPROVED ORDERS</h2>
                 <div style="text-align: center; padding: 40px; color: rgba(0, 255, 0, 0.6);">
                     <div style="font-size: 24px; margin-bottom: 15px;">⏳</div>
                     <p>Loading approved orders...</p>
@@ -230,18 +233,18 @@ function showTab(tab) {
         }).then(response => response.json()).then(orders => {
             let content = `
                 <div class="fade-in">
-                    <h2>✅ APPROVED ORDERS</h2>
+                    <h2>APPROVED ORDERS</h2>
                     <div style="margin-bottom: 20px; color: rgba(0, 255, 0, 0.7);">
                         Approved Orders: <span style="color: #00FF00; font-weight: bold;">${orders.length}</span>
                     </div>
                     <div style="overflow-x: auto;">
                         <table>
                             <tr>
-                                <th>👤 Player</th>
-                                <th>🏢 Gang</th>
-                                <th>📦 Asset</th>
-                                <th>📝 Details</th>
-                                <th>📊 Status</th>
+                                <th>PLAYER</th>
+                                <th>GANG</th>
+                                <th>ASSET</th>
+                                <th>DETAILS</th>
+                                <th>STATUS</th>
                             </tr>
             `;
             
@@ -250,8 +253,8 @@ function showTab(tab) {
                     <td>${order.player_name}</td>
                     <td>${order.gang_name}</td>
                     <td>${order.asset_name}</td>
-                    <td style="max-width: 200px;">${order.order_details}</td>
-                    <td><span style="color: #00FF00; font-weight: bold;">✅ ${order.status}</span></td>
+                    <td>${order.order_details}</td>
+                    <td><span style="color: #00FF00; font-weight: bold;">${order.status}</span></td>
                 </tr>`;
             });
             content += `
@@ -263,11 +266,11 @@ function showTab(tab) {
         }).catch(error => {
             mainContent.innerHTML = `
                 <div class="fade-in">
-                    <h2>✅ APPROVED ORDERS</h2>
+                    <h2>APPROVED ORDERS</h2>
                     <div style="text-align: center; padding: 40px; color: #FF6B6B;">
                         <div style="font-size: 24px; margin-bottom: 15px;">⚠️</div>
                         <p>Failed to load approved orders. Please try again.</p>
-                        <button onclick="showTab('approved')" style="margin-top: 20px;">🔄 Retry</button>
+                        <button onclick="showTab('approved')" style="margin-top: 20px;">Retry</button>
                     </div>
                 </div>
             `;
@@ -301,8 +304,8 @@ function submitOrder() {
                     Order ID: #${Math.random().toString(36).substr(2, 9).toUpperCase()}
                 </p>
                 <p style="margin-bottom: 30px;">Please wait for approval from authorized personnel.</p>
-                <button onclick="closeApp()" style="margin-right: 15px;">🚪 Close Terminal</button>
-                <button onclick="showTab('orders')" style="background: linear-gradient(145deg, #1a1a4a, #0f0f2f);">📋 New Order</button>
+                <button onclick="closeApp()" style="margin-right: 15px;">Close Terminal</button>
+                <button onclick="showTab('orders')" style="background: linear-gradient(145deg, #1a1a4a, #0f0f2f);">New Order</button>
             </div>
         `;
     }).catch(error => {
@@ -311,7 +314,7 @@ function submitOrder() {
                 <div style="font-size: 48px; margin-bottom: 20px;">❌</div>
                 <h2>SUBMISSION FAILED</h2>
                 <p>Unable to submit order. Please check your connection and try again.</p>
-                <button onclick="showTab('orders')" style="margin-top: 20px;">🔄 Try Again</button>
+                <button onclick="showTab('orders')" style="margin-top: 20px;">Try Again</button>
             </div>
         `;
     });

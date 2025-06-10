@@ -1,0 +1,77 @@
+body {
+    background-color: rgba(0, 0, 0, 0.6); /* خلفية شفافة */
+    color: #00FF00;
+    font-family: monospace;
+    display: none;
+    justify-content: center; /* وسط الشاشة */
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+body.visible {
+    display: flex;
+}
+
+.window {
+    background-color: #000;
+    border: 2px solid #00FF00;
+    box-shadow: 0 0 20px #00FF00;
+    border-radius: 10px;
+    width: 900px;
+    height: 600px;
+    display: flex;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #111;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar button {
+    margin: 5px 0;
+    background-color: #222;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.main {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+input, textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #111;
+    color: #00FF00;
+    border: 1px solid #00FF00;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* مهم: لكي نتحكم في عرض الأعمدة */
+}
+
+th, td {
+    border: 1px solid #00FF00;
+    padding: 8px;
+    text-align: left;
+    color: #00FF00;
+    overflow-wrap: break-word; /* يلف النص */
+    word-wrap: break-word;
+    white-space: pre-wrap; /* يسمح بالنصوص الطويلة */
+}
+
+th {
+    background-color: #111;
+}

@@ -1,0 +1,29 @@
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="window" id="login-window" style="display:none;">
+        <div class="main">
+            <h2>Login to BlackMarket</h2>
+            <input type="password" id="login_password" placeholder="Enter Password">
+            <button onclick="submitLogin()">Login</button>
+            <p id="login_error" style="color:red;"></p>
+        </div>
+    </div>
+
+    <div class="window" id="app-window" style="display:none;">
+        <div class="sidebar">
+            <button onclick="showTab('orders')">Asset Orders</button>
+            <button onclick="showTab('manager')">Manage Orders</button>
+            <button onclick="closeApp()">Close</button>
+        </div>
+        <div class="main" id="main-content">
+            <!-- Content will be loaded here -->
+        </div>
+    </div>
+        <script src="app.js"></script>
+
+</body>
+
+</html>

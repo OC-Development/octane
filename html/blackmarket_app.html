@@ -1,29 +1,60 @@
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackMarket - Asset Operation Center</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Matrix Background -->
+    <div class="matrix-bg">
+        <div class="matrix-text">ASSETS ASSETS ASSETS LOS SANTOS ASSETS THE FACELESS ASSETS ASSETS THE FACELESS LOS SANTOS THE FACELESS LOS SANTOS ASSETS LOS SANTOS THE FACELESS THE SANTOS THE FACELESS ASSETS LOS SANTOS THE FACELESS</div>
+        <div class="matrix-text">THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS ASSETS THE FACELESS LOS SANTOS THE FACELESS ASSETS LOS SANTOS THE FACELESS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS</div>
+        <div class="matrix-text">ASSETS ASSETS THE FACELESS THE FACELESS THE FACELESS THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS</div>
+        <div class="matrix-text">LOS SANTOS ASSETS ASSETS ASSETS THE FACELESS THE FACELESS ASSETS LOS SANTOS THE FACELESS ASSETS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS</div>
+        <div class="matrix-text">THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS</div>
+        <div class="matrix-text">ASSETS THE FACELESS ASSETS ASSETS THE FACELESS THE FACELESS ASSETS LOS SANTOS THE FACELESS ASSETS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS</div>
+        <div class="matrix-text">LOS SANTOS ASSETS ASSETS ASSETS THE FACELESS THE FACELESS ASSETS LOS SANTOS THE FACELESS ASSETS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS</div>
+        <div class="matrix-text">ASSETS ASSETS THE FACELESS THE FACELESS ASSETS LOS SANTOS THE FACELESS ASSETS ASSETS THE FACELESS LOS SANTOS ASSETS ASSETS ASSETS</div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loading-screen">
+        <div class="loading-icon"></div>
+        <div class="loading-text" id="loading-text">CONFIGURING SECURITY PARAMETERS...</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loading-progress"></div>
+        </div>
+    </div>
+
+    <!-- Login Window -->
     <div class="window" id="login-window" style="display:none;">
         <div class="main">
-            <h2>Login to BlackMarket</h2>
-            <input type="password" id="login_password" placeholder="Enter Password">
-            <button onclick="submitLogin()">Login</button>
-            <p id="login_error" style="color:red;"></p>
+            <div class="login-header">
+                <div style="font-size: 40px; margin-bottom: 15px;">🦅</div>
+                <h1 class="login-title">ASSET OPERATION CENTER</h1>
+                <p class="login-subtitle">THE FACELESS</p>
+            </div>
+            
+            <div class="login-form">
+                <p class="identity-prompt">> Good evening, <span class="highlight">ASSET</span>. Please verify your identity.</p>
+                <input type="password" id="login_password" placeholder="••••••••">
+                <button onclick="submitLogin()">AUTHENTICATE</button>
+                <p id="login_error"></p>
+            </div>
         </div>
     </div>
 
+    <!-- App Window -->
     <div class="window" id="app-window" style="display:none;">
         <div class="sidebar">
-            <button onclick="showTab('orders')">Asset Orders</button>
-            <button onclick="showTab('manager')">Manage Orders</button>
-            <button onclick="closeApp()">Close</button>
+            <!-- Sidebar content will be dynamically loaded -->
         </div>
         <div class="main" id="main-content">
-            <!-- Content will be loaded here -->
+            <!-- Main content will be loaded here -->
         </div>
     </div>
-        <script src="app.js"></script>
 
+    <script src="app.js"></script>
 </body>
-
 </html>
